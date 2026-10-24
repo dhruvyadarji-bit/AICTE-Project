@@ -1,45 +1,120 @@
-const PATHS = {
-  overview: 'M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z',
-  complaints: 'M4 4h16v12H7l-3 3V4zm2 4h12v2H6V8zm0 4h8v2H6v-2z',
-  bureaus: 'M4 21V7l8-4 8 4v14h-6v-6h-4v6H4zm4-11h2v2H8v-2zm6 0h2v2h-2v-2z',
-  institutions: 'M3 21h18v-2H3v2zM5 17h4V5H5v12zm6 0h4V9h-4v8zm6 0h3V3h-3v14z',
-  search: 'M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm10 2-4.35-4.35',
-  plus: 'M12 5v14M5 12h14',
-  close: 'M6 6l12 12M18 6L6 18',
-  chevron: 'M9 5l7 7-7 7',
-  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zm0-14v5l3 2',
-  alert: 'M12 3 2 21h20L12 3zm0 6v6m0 3v.5',
-  check: 'M4 12.5 9.5 18 20 6.5',
-  bell: 'M18 16v-5a6 6 0 1 0-12 0v5l-2 3h16l-2-3zm-6 3a2.5 2.5 0 0 0 4 0',
-  user: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-8 9a8 8 0 0 1 16 0',
-  trend: 'M3 17l6-6 4 4 8-8m0 0v6m0-6h-6',
-  filter: 'M3 5h18l-7 8v6l-4 2v-8L3 5z',
-  scale: 'M12 3v18M6 7l-3 7h6L6 7zm12 0-3 7h6l-3-7zM6 7l6-2 6 2',
-  menu: 'M4 6h16M4 12h16M4 18h16',
+const ICONS = {
+  overview: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+    </svg>
+  ),
+  complaints: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 12h6" />
+      <path d="M12 12v4" />
+      <circle cx="12" cy="14" r="9" strokeWidth="2" />
+    </svg>
+  ),
+  bureaus: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <path d="M9 9h6" />
+      <path d="M9 13h6" />
+      <path d="M9 17h4" />
+    </svg>
+  ),
+  institutions: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 4h18M3 8h18M3 12h18M3 16h18" />
+      <path d="M5 20h14" />
+    </svg>
+  ),
+  menu: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  ),
+  close: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  ),
+  clock: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </svg>
+  ),
+  bell: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 9a6 6 0 0 0-12 0c0 5-2.5 7-2.5 7h15c0 0-2.5-2-2.5-5 0-3-1-4-2.5-4" />
+      <path d="M12 19v4" />
+      <path d="M8 23h8" />
+    </svg>
+  ),
+  alerts: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 9v4" />
+      <path d="M12 17h.01" />
+      <path d="M10.3 2.3a1 1 0 0 0-1.4 0l-2 5.3A7 7 0 0 0 10.3 18a7 7 0 0 0 8.3-8.9L12 4.7a5 5 0 0 0-2.8-2l-.9 2.6a1 1 0 0 0 1.4 1.4l.9-1.3a3 3 0 0 1 5.1 2.3" />
+    </svg>
+  ),
+  alert: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 8v4" />
+      <path d="M12 16h.01" />
+    </svg>
+  ),
+  checks: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  ),
+  check: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  ),
+  scale: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3c-4.5 0-8 3-8 9 0 4 2 6 4 8l2 6h6l2-6c2-2 4-4 4-8 0-6-3.5-9-8-9z" />
+      <path d="M12 19v4" />
+      <path d="M8 23h8" />
+    </svg>
+  ),
+  plus: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+  ),
+  chevron: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  ),
+  search: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="6" />
+      <path d="M21 21l-4.3-4.3" />
+    </svg>
+  ),
+  filter: (
+    <svg className="h-full w-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
+    </svg>
+  ),
 }
 
-export default function Icon({ name, className = 'h-4 w-4', filled = false }) {
-  const d = PATHS[name]
-  if (!d) return null
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className={className}
-      fill={filled ? 'currentColor' : 'none'}
-      stroke={filled ? 'none' : 'currentColor'}
-      strokeWidth={1.8}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {name === 'search' || name === 'clock' || name === 'trend' ? (
-        <>
-          <circle cx="11" cy="11" r="7" />
-          <path d="m20 20-3.6-3.6" />
-        </>
-      ) : (
-        <path d={d} />
-      )}
-    </svg>
-  )
+export default function Icon({ name, className, ...rest }) {
+  const svg = ICONS[name] || null
+  const svgProps = {}
+  for (const key in rest) {
+    if (key !== 'name') svgProps[key] = rest[key]
+  }
+  return svg ? (
+    <div className={`${className || ''} flex h-full w-full items-center justify-center`}>
+      {svg}
+    </div>
+  ) : null
 }

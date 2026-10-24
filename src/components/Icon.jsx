@@ -1,5 +1,5 @@
 const PATHS = {
-  overview: 'M4 4h16v12H7l-3 3V4zm2 4h12v2H6V8zm0 4h8v2H6v-2z',
+  overview: 'M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z',
   complaints: 'M4 4h16v12H7l-3 3V4zm2 4h12v2H6V8zm0 4h8v2H6v-2z',
   bureaus: 'M4 21V7l8-4 8 4v14h-6v-6h-4v6H4zm4-11h2v2H8v-2zm6 0h2v2h-2v-2z',
   institutions: 'M3 21h18v-2H3v2zM5 17h4V5H5v12zm6 0h4V9h-4v8zm6 0h3V3h-3v14z',

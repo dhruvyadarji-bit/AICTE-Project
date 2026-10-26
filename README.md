@@ -112,5 +112,4 @@ MIT License – free for academic and institutional use.
 
 ## 🙏 Acknowledgements
 
-- Built with ❤️ using [Freebuff Sites](https://freebuff.com)
 - Icons and design inspired by AICTE official guidelines

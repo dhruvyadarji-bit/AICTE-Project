@@ -14,7 +14,7 @@ The **AICTE Complaint Monitoring Dashboard** provides secretariat cells and admi
 
 ## 🚀 Live Demo
 
-**Preview:** [https://site-a620c4e6e3c14745b4b2e79b00ef1b3b.freebuff.page](https://site-a620c4e6e3c14745b4b2e79b00ef1b3b.freebuff.page)
+**Preview:** https://casebridge-sigma.vercel.app/
 
 **GitHub:** [https://github.com/dhruvyadarji-bit/AICTE-Project](https://github.com/dhruvyadarji-bit/AICTE-Project)
 
